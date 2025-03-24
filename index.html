@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jstones Live Scores</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    
+</head>
+<body>
+    <header>
+        <h1>MCA CUP Football Live Scores</h1>
+        <nav>
+            <ul>
+                <li><a href="#fixtures">Fixtures</a></li>
+                <li><a href="#live-scores">Live Scores</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="fixtures">
+        <h2>Upcoming Fixtures</h2>
+        <ul id="fixture-list">
+            <li>Jstones FC  vs Gideon FC - March 25, 2025</li>
+            <li>ICS College vs RVTTI - March 26, 2025</li>
+        </ul>
+        <input type="text" id="newFixture" placeholder="Add new fixture">
+        <button onclick="addFixture()" id="btn">Add Fixture</button>
+    </section>
+    
+    <section id="live-scores">
+        <h2>Live Scores</h2>
+        <div id="scores">
+            <p>No live matches currently.</p>
+        </div>
+        <input type="text" id="match" placeholder="Match (e.g., Team A vs Team B)">
+        <input type="text" id="score" placeholder="Score (e.g., 1-0)">
+        <button onclick="updateScore()" id="btn">Update Score</button>
+    </section>
+
+    <section id="live-scores">
+        <h2>Full-Time Scores</h2>
+        <div id="scores">
+            <p>No Completed matches currently.</p>
+        </div>
+        <input type="text" id="match" placeholder="Match (e.g., Team A vs Team B)">
+        <input type="text" id="score" placeholder="Score (e.g., 1-0)">
+        <button onclick="updateScore()"id="btn">Update Score</button>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@localscores.com</p>
+        <p>Phone: (123) 456-7890</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Local Football Live Scores. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        function addFixture() {
+            let fixtureInput = document.getElementById('newFixture');
+            let fixtureList = document.getElementById('fixture-list');
+            if (fixtureInput.value.trim() !== '') {
+                let li = document.createElement('li');
+                li.textContent = fixtureInput.value;
+                fixtureList.appendChild(li);
+                fixtureInput.value = '';
+            }
+        }
+
+        function updateScore() {
+            let match = document.getElementById('match').value;
+            let score = document.getElementById('score').value;
+            let scoresDiv = document.getElementById('scores');
+            if (match.trim() !== '' && score.trim() !== '') {
+                scoresDiv.innerHTML = `<p>${match}: ${score}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
